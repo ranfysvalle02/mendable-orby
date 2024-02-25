@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-const Noise = require('noisejs').Noise;
+const Noise = require('noisejs').Noise; // don't love this type of import, but the Noise library is funky :(
 
 const My3DComponent = () => {
   const mountRef = useRef<HTMLDivElement | null>(null);
@@ -51,7 +51,7 @@ const My3DComponent = () => {
       requestAnimationFrame(animate);
 
       globe.rotation.y += 0.005; //adjust this for speed change
-      globe.rotation.x += 0.009; //adjust this for speed change
+      globe.rotation.x += 0.008; //adjust this for speed change
 
       globe.scale.x = 1 + noise.simplex2(Date.now() / 1000, 0) / 10;
       globe.scale.y = 1 + noise.simplex2(0, Date.now() / 1000) / 10;
@@ -67,7 +67,7 @@ const My3DComponent = () => {
     const neonColors = [0xff00ff, 0x00ffff, 0xffff00]; // Neon Pink, Cyan, Yellow
     let currentColorIndex = 0;
 
-    const onDocumentMouseDown = (event) => {
+    const onDocumentMouseDown = (event:any) => {
       event.preventDefault();
 
       // Update the cube's color
@@ -94,7 +94,7 @@ const My3DComponent = () => {
 
 export default My3DComponent;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context:any) {
   return {
     props: {}, // will be passed to the page component as props
   }
