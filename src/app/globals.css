@@ -88,3 +88,7 @@
 .mendable-textarea::-webkit-scrollbar-thumb {
   background-color: black;
 }
+
+html,body{
+  background-color: black;
+}

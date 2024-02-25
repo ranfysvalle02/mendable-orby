@@ -14,7 +14,7 @@ import { welcomeMessage } from "@/lib/strings";
 import { useChat } from "ai/react";
 import { Share } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Bubble from "./chat/bubble";
 import SendForm from "./chat/send-form";
 
@@ -22,10 +22,19 @@ export default function Chat() {
   const { toast } = useToast();
   const searchParams = useSearchParams();
   const share = searchParams.get("share");
+
   //@ts-ignore
   const lzstring = LZString;
+  const speak = (msg:string) => {
+    const utterance = new SpeechSynthesisUtterance();
+    utterance.text = msg; // Speak the last message
+    window.speechSynthesis.speak(utterance);
+  };
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat({
+      onFinish: (d:any) => {  
+        speak(String(d.content).replaceAll('<|loading_tools|>',''));
+      },
       initialMessages:
         share && lzstring
           ? JSON.parse(lzstring.decompressFromEncodedURIComponent(share))
@@ -36,7 +45,7 @@ export default function Chat() {
   useEnsureRegeneratorRuntime();
 
   const scrollAreaRef = useRef<null | HTMLDivElement>(null);
-
+  
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo({
@@ -73,7 +82,7 @@ export default function Chat() {
           />
         </div>
         <CardDescription className=" leading-3">
-          Powered by Mendable and Vercel
+          orby | Powered by Mendable and Vercel
         </CardDescription>
       </CardHeader>
       <CardContent className="">
@@ -91,6 +100,7 @@ export default function Chat() {
           {messages.map((message) => (
             <Bubble key={message.id} message={message} />
           ))}
+          
         </ScrollArea>
       </CardContent>
       <CardFooter>
