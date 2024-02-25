@@ -82,7 +82,7 @@ export default function Chat() {
           />
         </div>
         <CardDescription className=" leading-3">
-          orby | Powered by Mendable and Vercel
+          1337 | Powered by Mendable and Vercel
         </CardDescription>
       </CardHeader>
       <CardContent className="">

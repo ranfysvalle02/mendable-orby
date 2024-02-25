@@ -6,7 +6,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'orby v1.0.0',
+  title: '1337',
   description: 'powered by Mendable',
 }
 
@@ -26,7 +26,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <div style={{position: 'absolute', top: 0, left: 0, width: '100%'}}>
-          <h1 style={{textAlign: 'center', fontFamily: 'Sixtyfour', fontSize: '3rem', background:'black', color:'white'}}>orby</h1>
+          <h1 style={{textAlign: 'center', fontFamily: 'Sixtyfour', fontSize: '3rem', background:'black', color:'white'}}>1337</h1>
         </div>
         {children}
         <Toaster />
