@@ -90,6 +90,10 @@ export default function Bubble({
                       `<|tool_error|>`,
                       renderToString(<AiOutlineWarning size={20} />)
                     )
+                    .replaceAll(
+                      `<|tool_output|>`,
+                      ""
+                    )
                 : message.content
                     .replaceAll(`<|tool_error|>`, "")
                     .replaceAll(
@@ -112,7 +116,11 @@ export default function Bubble({
                         </>
                       )
                     )
-                    .replaceAll(`<|loading_tools|>`, ""),
+                    .replaceAll(`<|loading_tools|>`, "")
+                    .replaceAll(
+                      `<|tool_output|>`,
+                      ""
+                    ),
             }}
           />
         )}
