@@ -60,7 +60,26 @@ export default function Chat() {
       <CardHeader>
         <div className="flex flex-row items-start justify-between max-w-[100%]">
           <CardTitle className="text-lg">Chatbot</CardTitle>
-          
+          <Share
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                const tmp = new URL(window.location.href);
+                tmp.searchParams.set(
+                  "share",
+                  lzstring.compressToEncodedURIComponent(
+                    JSON.stringify(messages)
+                  )
+                );
+                navigator.clipboard.writeText(tmp.toString()).then(() => {
+                  toast({
+                    description: "Conversation link copied to dashboard",
+                  });
+                });
+              }
+            }}
+            size={18}
+            className="cursor-pointer"
+          />
         </div>
         <CardDescription className=" leading-3">
           1337 | Powered by Mendable and Vercel
