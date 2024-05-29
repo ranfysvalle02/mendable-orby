@@ -33,7 +33,7 @@ export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat({
       onFinish: (d:any) => {  
-        speak(String(d.content).replaceAll('<|loading_tools|>',''));
+        //speak(String(d.content).replaceAll('<|loading_tools|>',''));
       },
       initialMessages:
         share && lzstring
