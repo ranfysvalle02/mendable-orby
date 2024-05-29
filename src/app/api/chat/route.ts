@@ -4,7 +4,7 @@ import { MendableStream } from "@/lib/mendable_stream";
 import { welcomeMessage } from "@/lib/strings";
 
 export const runtime = "edge";
-const MENDABLE_API_KEY = "bf4334a3-b158-4ed0-bbf5-92d373684736";
+const MENDABLE_API_KEY = "fafa68b5-c6c9-41a5-a302-5eeb2d0550c7";
 
 export async function POST(req: Request) {
   // Extract the `messages` from the body of the request
